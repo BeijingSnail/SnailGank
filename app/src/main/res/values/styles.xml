@@ -10,4 +10,16 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="radiobutton_bottom">
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">@drawable/radiobutton_text_color_style</item>
+        <item name="android:button">@null</item>
+        <item name="android:layout_marginBottom">3dp</item>
+        <item name="android:background">@null</item>
+        <item name="android:gravity">center</item>
+        <item name="android:drawablePadding">3dp</item>
+        <item name="android:scaleX">0.8</item>
+        <item name="android:scaleY">0.8</item>
+    </style>
+
 </resources>

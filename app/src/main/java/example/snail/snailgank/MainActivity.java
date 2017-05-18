@@ -7,13 +7,14 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import example.snail.snailgank.base.BaseActivity;
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedChangeListener {
 
     @Bind(R.id.main_toolbar_tv)
     TextView mainToolbarTv;
@@ -27,6 +28,8 @@ public class MainActivity extends BaseActivity {
     DrawerLayout mianDrawerLayout;
     @Bind(R.id.activity_main)
     LinearLayout activityMain;
+    @Bind(R.id.main_radio_group)
+    RadioGroup mainRadioGroup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,8 +42,23 @@ public class MainActivity extends BaseActivity {
         mDrawerToggle.syncState();
         mianDrawerLayout.addDrawerListener(mDrawerToggle);
         mainNavigationView.setItemIconTintList(null);
+        mainRadioGroup.setOnCheckedChangeListener(this);
 
     }
 
+    @Override
+    public void onCheckedChanged(RadioGroup group, int checkedId) {
+        switch (checkedId) {
+            case R.id.android_rb:
+                break;
+            case R.id.ios_rb:
+                break;
+            case R.id.welfare_rb:
+                break;
+            case R.id.res_rb:
+                break;
 
+        }
+
+    }
 }

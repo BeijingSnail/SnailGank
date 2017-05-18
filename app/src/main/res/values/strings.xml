@@ -2,4 +2,6 @@
     <string name="app_name">SnailGank</string>
     <string name="drawer_open">Open</string>
     <string name="drawer_close">Close</string>
+    <string name="Welfare">福利</string>
+    <string name="ExpandingResources">拓展资源</string>
 </resources>

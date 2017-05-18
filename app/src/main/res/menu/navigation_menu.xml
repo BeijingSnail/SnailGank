@@ -3,14 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <group android:checkableBehavior="single">
         <item
-            android:icon="@mipmap/ic_launcher"
-            android:title="ietm1"></item>
+            android:icon="@mipmap/android_up"
+            android:title="Android"></item>
         <item
-            android:icon="@mipmap/ic_launcher"
-            android:title="ietm2"></item>
+            android:icon="@mipmap/ios_up"
+            android:title="iOS"></item>
         <item
-            android:icon="@mipmap/ic_launcher"
-            android:title="ietm3"></item>
+            android:icon="@mipmap/welfare_up"
+            android:title="@string/Welfare"></item>
+        <item
+            android:icon="@mipmap/res_up"
+            android:title="@string/ExpandingResources"></item>
     </group>
 
 </menu>
