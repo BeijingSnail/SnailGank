@@ -11,6 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
@@ -40,6 +41,15 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
     LinearLayout activityMain;
     @Bind(R.id.main_radio_group)
     RadioGroup mainRadioGroup;
+
+    @Bind(R.id.android_rb)
+    RadioButton androidRb;
+    @Bind(R.id.ios_rb)
+    RadioButton iosRb;
+    @Bind(R.id.welfare_rb)
+    RadioButton welfareRb;
+    @Bind(R.id.res_rb)
+    RadioButton resRb;
 
     private AndroidFragment androidFragment;
     private IosFragment iosFragment;
@@ -73,15 +83,19 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
             switch (item.getItemId()) {
                 case R.id.item_android:
                     setTabSelection(Constant.ANDROIDFRAGMENT);
+                    androidRb.setChecked(true);
                     break;
                 case R.id.item_ios:
                     setTabSelection(Constant.IOSFRAGMENT);
+                    iosRb.setChecked(true);
                     break;
                 case R.id.item_welfare:
                     setTabSelection(Constant.WELFAREFRAGMENT);
+                    welfareRb.setChecked(true);
                     break;
                 case R.id.item_res:
                     setTabSelection(Constant.RESFRAGMENT);
+                    resRb.setChecked(true);
                     break;
             }
             closeDrawerLayout();
@@ -211,4 +225,6 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
             ActivityPageManager.getInstance().exit();
         }
     }
+
+
 }

@@ -20,7 +20,6 @@ public abstract class BaseFragment extends Fragment {
 
     private View mContentView;
 
-
     public BaseFragment() {
         // Required empty public constructor
     }
