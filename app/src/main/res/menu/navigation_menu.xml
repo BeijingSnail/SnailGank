@@ -3,16 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <group android:checkableBehavior="single">
         <item
-            android:icon="@mipmap/android_up"
+            android:id="@+id/item_android"
+            android:icon="@drawable/rb_android_style"
             android:title="Android"></item>
         <item
-            android:icon="@mipmap/ios_up"
+            android:id="@+id/item_ios"
+            android:icon="@drawable/rb_ios_style"
             android:title="iOS"></item>
         <item
-            android:icon="@mipmap/welfare_up"
+            android:id="@+id/item_welfare"
+            android:icon="@drawable/rb_welfare_style"
             android:title="@string/Welfare"></item>
         <item
-            android:icon="@mipmap/res_up"
+            android:id="@+id/item_res"
+            android:icon="@drawable/rb_res_style"
             android:title="@string/ExpandingResources"></item>
     </group>
 

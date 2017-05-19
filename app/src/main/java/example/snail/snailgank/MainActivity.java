@@ -16,6 +16,7 @@ import android.widget.TextView;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import example.snail.snailgank.base.BaseActivity;
+import example.snail.snailgank.common.ActivityPageManager;
 import example.snail.snailgank.common.Constant;
 import example.snail.snailgank.fragment.AndroidFragment;
 import example.snail.snailgank.fragment.IosFragment;
@@ -45,6 +46,8 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
     private ResFragment resFragment;
     private FragmentManager fm;
 
+    private long exitTime;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,12 +55,50 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
         ButterKnife.bind(this);
         fm = getSupportFragmentManager();
         initActionBar();
-
+        initNavigation();
         //设置侧拉页icon颜色
-        mainNavigationView.setItemIconTintList(null);
+
         mainRadioGroup.setOnCheckedChangeListener(this);
         //默认显示第一个Fragment
         setTabSelection(Constant.ANDROIDFRAGMENT);
+
+    }
+
+    private void initNavigation() {
+        mainNavigationView.setItemIconTintList(null);
+        initNavigationMenu();
+    }
+
+    private void initNavigationMenu() {
+        mainNavigationView.setCheckedItem(R.id.item_android);
+        mainNavigationView.setNavigationItemSelectedListener((item) -> {
+            mainNavigationView.setCheckedItem(item.getItemId());
+            switch (item.getItemId()) {
+                case R.id.item_android:
+                    setTabSelection(Constant.ANDROIDFRAGMENT);
+                    break;
+                case R.id.item_ios:
+                    setTabSelection(Constant.IOSFRAGMENT);
+                    break;
+                case R.id.item_welfare:
+                    setTabSelection(Constant.WELFAREFRAGMENT);
+                    break;
+                case R.id.item_res:
+                    setTabSelection(Constant.RESFRAGMENT);
+                    break;
+            }
+            closeDrawerLayout();
+            return false;
+        });
+    }
+
+    /**
+     * 关闭左侧 侧滑菜单
+     */
+    private void closeDrawerLayout() {
+        if (mianDrawerLayout.isDrawerOpen(Gravity.LEFT)) {
+            mianDrawerLayout.closeDrawers();
+        }
     }
 
     /**
@@ -69,7 +110,6 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
         ActionBarDrawerToggle mDrawerToggle = new ActionBarDrawerToggle(this, mianDrawerLayout, mainToolbar, R.string.drawer_open, R.string.drawer_close);
         mDrawerToggle.syncState();
         mianDrawerLayout.addDrawerListener(mDrawerToggle);
-
     }
 
     @Override
@@ -134,7 +174,6 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
                 break;
         }
         transaction.commit();
-        closeDrawerLayout();
     }
 
     /**
@@ -167,14 +206,14 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
 
     }
 
-    /**
-     * 关闭左侧 侧滑菜单
-     */
-    private void closeDrawerLayout() {
-        if (mianDrawerLayout.isDrawerOpen(Gravity.LEFT)) {
-            mianDrawerLayout.closeDrawers();
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        long currentTime = System.currentTimeMillis();
+        if (currentTime - exitTime > 2000) {
+            showSnackBar(R.string.ClickAgain);
+        } else {
+            ActivityPageManager.getInstance().exit(this);
         }
     }
-
-
 }
