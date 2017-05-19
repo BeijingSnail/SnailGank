@@ -40,15 +40,66 @@
     <android.support.v4.widget.DrawerLayout
         android:id="@+id/mian_drawer_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1">
+        android:layout_height="match_parent">
 
-        <FrameLayout
-            android:id="@+id/main_content"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        </FrameLayout>
+            <FrameLayout
+                android:id="@+id/main_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+            </FrameLayout>
+
+            <RadioGroup
+                android:id="@+id/main_radio_group"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/android_rb"
+                    style="@style/radiobutton_bottom"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:checked="true"
+                    android:drawableTop="@drawable/rb_android_style"
+                    android:text="Android" />
+
+                <RadioButton
+                    android:id="@+id/ios_rb"
+                    style="@style/radiobutton_bottom"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableTop="@drawable/rb_ios_style"
+                    android:text="IOS" />
+
+                <RadioButton
+                    android:id="@+id/welfare_rb"
+                    style="@style/radiobutton_bottom"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableTop="@drawable/rb_welfare_style"
+                    android:text="@string/Welfare" />
+
+                <RadioButton
+                    android:id="@+id/res_rb"
+                    style="@style/radiobutton_bottom"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableTop="@drawable/rb_res_style"
+                    android:text="@string/ExpandingResources" />
+            </RadioGroup>
+
+        </LinearLayout>
 
         <android.support.design.widget.NavigationView
             android:id="@+id/main_navigation_view"
@@ -61,50 +112,6 @@
         </android.support.design.widget.NavigationView>
 
     </android.support.v4.widget.DrawerLayout>
-
-    <RadioGroup
-        android:id="@+id/main_radio_group"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <RadioButton
-            android:id="@+id/android_rb"
-            style="@style/radiobutton_bottom"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:checked="true"
-            android:drawableTop="@drawable/rb_android_style"
-            android:text="Android" />
-
-        <RadioButton
-            android:id="@+id/ios_rb"
-            style="@style/radiobutton_bottom"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:drawableTop="@drawable/rb_ios_style"
-            android:text="IOS" />
-
-        <RadioButton
-            android:id="@+id/welfare_rb"
-            style="@style/radiobutton_bottom"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:drawableTop="@drawable/rb_welfare_style"
-            android:text="@string/Welfare" />
-
-        <RadioButton
-            android:id="@+id/res_rb"
-            style="@style/radiobutton_bottom"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:drawableTop="@drawable/rb_res_style"
-            android:text="@string/ExpandingResources" />
-    </RadioGroup>
 
 
 </LinearLayout>
