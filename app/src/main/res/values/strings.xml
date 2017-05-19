@@ -5,4 +5,6 @@
     <string name="Welfare">福利</string>
     <string name="ExpandingResources">拓展资源</string>
     <string name="ClickAgain">再按一次退出程序</string>
+    <string name="HomePage">首页</string>
+    <string name="More">更多</string>
 </resources>

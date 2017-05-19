@@ -1,23 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/item_android"
-            android:icon="@drawable/rb_android_style"
-            android:title="Android"></item>
-        <item
-            android:id="@+id/item_ios"
-            android:icon="@drawable/rb_ios_style"
-            android:title="iOS"></item>
-        <item
-            android:id="@+id/item_welfare"
-            android:icon="@drawable/rb_welfare_style"
-            android:title="@string/Welfare"></item>
-        <item
-            android:id="@+id/item_res"
-            android:icon="@drawable/rb_res_style"
-            android:title="@string/ExpandingResources"></item>
-    </group>
+    <item android:title="@string/HomePage">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/item_android"
+                    android:icon="@mipmap/android_up"
+                    android:title="Android"></item>
+                <item
+                    android:id="@+id/item_ios"
+                    android:icon="@mipmap/ios_up"
+                    android:title="iOS"></item>
+                <item
+                    android:id="@+id/item_welfare"
+                    android:icon="@mipmap/welfare_up"
+                    android:title="@string/Welfare"></item>
+                <item
+                    android:id="@+id/item_res"
+                    android:icon="@mipmap/res_up"
+                    android:title="@string/ExpandingResources"></item>
+            </group>
+
+        </menu>
+
+    </item>
+    <item android:title="@string/More">
+        <menu>
+
+        </menu>
+    </item>
+
 
 </menu>

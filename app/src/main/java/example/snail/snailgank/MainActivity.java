@@ -1,6 +1,7 @@
 package example.snail.snailgank;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -49,23 +50,19 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
     private long exitTime;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         fm = getSupportFragmentManager();
         initActionBar();
         initNavigation();
-        //设置侧拉页icon颜色
-
         mainRadioGroup.setOnCheckedChangeListener(this);
         //默认显示第一个Fragment
         setTabSelection(Constant.ANDROIDFRAGMENT);
-
     }
 
     private void initNavigation() {
-        mainNavigationView.setItemIconTintList(null);
         initNavigationMenu();
     }
 
@@ -128,7 +125,6 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
                 setTabSelection(Constant.RESFRAGMENT);
                 break;
         }
-
     }
 
     /**
@@ -203,17 +199,16 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
 
         if (resFragment != null)
             transaction.hide(resFragment);
-
     }
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
         long currentTime = System.currentTimeMillis();
         if (currentTime - exitTime > 2000) {
             showSnackBar(R.string.ClickAgain);
+            exitTime = currentTime;
         } else {
-            ActivityPageManager.getInstance().exit(this);
+            ActivityPageManager.getInstance().exit();
         }
     }
 }

@@ -1,8 +1,6 @@
 package example.snail.snailgank.common;
 
 import android.app.Activity;
-import android.app.ActivityManager;
-import android.content.Context;
 
 import java.util.Stack;
 
@@ -74,8 +72,8 @@ public class ActivityPageManager {
      * 关闭所有Activity
      */
     private void finishAllActivity() {
-        for (Activity activity : activityStack) {
-            activity.finish();
+        for (int i = 0; i < activityStack.size(); i++) {
+            activityStack.get(i).finish();
         }
         activityStack.clear();
     }
@@ -83,10 +81,8 @@ public class ActivityPageManager {
     /**
      * 完全退出程序
      */
-    public void exit(Context context) {
+    public void exit() {
         finishAllActivity();
-        ActivityManager activityManager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
-        activityManager.restartPackage(context.getPackageName());
         System.exit(0);
         android.os.Process.killProcess(android.os.Process.myPid());
     }
