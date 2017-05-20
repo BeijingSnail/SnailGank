@@ -18,4 +18,6 @@ public final class Constant {
     public static final String IosFragmentTag = "IOSFRAGMENTTAG";
     public static final String WelfareFragmentTag = "WELFAREFRAGMENTTAG";
     public static final String ResFragmentTag = "RESFRAGMENTTAG";
+
+    public static final String GankBaseUrl = "http://gank.io/";
 }
