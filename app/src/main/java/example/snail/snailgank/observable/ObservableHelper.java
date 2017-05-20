@@ -20,7 +20,6 @@ public class ObservableHelper {
                 .create(GankApi.class)
                 .getAndroidDatas(type, count, page)
                 .flatMap(ObservableHelper::getAndroidList);
-
     }
 
     private static Observable<List<AndroidBean>> getAndroidList(AndroidResult androidResult) {

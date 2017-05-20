@@ -4,11 +4,9 @@
     android:layout_height="match_parent"
     tools:context="example.snail.snailgank.fragment.AndroidFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <com.jcodecraeer.xrecyclerview.XRecyclerView
+        android:id="@+id/android_xrv"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:textColor="@color/colorPrimary"
-        android:text="AndroidFragment" />
+        android:layout_height="match_parent" />
 
 </FrameLayout>
