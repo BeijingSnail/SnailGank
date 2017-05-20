@@ -24,9 +24,19 @@ public class ObservableHelper {
     }
 
     private static Observable<List<AndroidBean>> getAndroidList(AndroidResult androidResult) {
+        List<AndroidBean> androidBeanList = androidResult.getResults();
+        for (AndroidBean bean : androidBeanList) {
+            bean.setCreatedAt(formatCreatedAt(bean.getCreatedAt()));
+        }
+
         return Observable.create((subscriber -> {
             subscriber.onNext(androidResult.getResults());
             subscriber.onCompleted();
         }));
     }
+
+    private static String formatCreatedAt(String createdAt) {
+        return createdAt.substring(0, createdAt.indexOf("T"));
+    }
+
 }

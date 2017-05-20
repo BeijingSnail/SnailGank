@@ -41,6 +41,7 @@ public class AndroidFragment extends BaseFragment implements Observer<List<Andro
     @Override
     public void onResume() {
         super.onResume();
+        Log.d("zzq", "onResume");
         ObservableHelper.getAndroidObservable(TYPE, COUNT, page)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -60,7 +61,6 @@ public class AndroidFragment extends BaseFragment implements Observer<List<Andro
     @Override
     public void onNext(List<AndroidBean> androidBeen) {
         Log.d("zzq", "androidBeen=" + androidBeen.get(1).toString());
-
     }
 
 }
