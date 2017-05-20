@@ -28,6 +28,7 @@ public abstract class BaseAdapter<T> extends RecyclerView.Adapter {
     public BaseAdapter(Context context, List<T> data) {
         this.mContext = context;
         this.dataSet = data;
+        this.layoutInflater = LayoutInflater.from(mContext);
     }
 
     @Override
@@ -39,12 +40,16 @@ public abstract class BaseAdapter<T> extends RecyclerView.Adapter {
         return mContext;
     }
 
-    public void addData(T data) {
-        this.dataSet.add(data);
+    public void addData(List<T> data) {
+        this.dataSet.addAll(data);
     }
 
     public void removeAll() {
         this.dataSet.clear();
+    }
+
+    public void setDataSet(List<T> data) {
+        this.dataSet = data;
     }
 
 }

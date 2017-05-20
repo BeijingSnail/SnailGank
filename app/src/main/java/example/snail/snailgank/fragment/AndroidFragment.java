@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +14,6 @@ import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import java.util.List;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 import example.snail.snailgank.R;
 import example.snail.snailgank.adapter.AndroidAdapter;
 import example.snail.snailgank.base.BaseFragment;
@@ -62,7 +60,6 @@ public class AndroidFragment extends BaseFragment implements Observer<List<Andro
         androidXrv.refresh();
     }
 
-
     public void loadData(int page) {
         ObservableHelper.getAndroidObservable(TYPE, COUNT, page)
                 .subscribeOn(Schedulers.io())
@@ -86,21 +83,17 @@ public class AndroidFragment extends BaseFragment implements Observer<List<Andro
 
     @Override
     public void onNext(List<AndroidBean> androidBeen) {
-        Log.d("zzq", "androidBeen=" + androidBeen.get(1).toString());
-        adapter.addData(androidBeen);
-//        adapter.notifyDataSetChanged();
-
+        if (page == 1) {
+            adapter.removeAll();
+            adapter.setDataSet(androidBeen);
+        } else {
+            adapter.addData(androidBeen);
+        }
     }
 
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        ButterKnife.unbind(this);
-    }
 
     @Override
     public void onRefresh() {
-        Log.d("zzq", "onRefresh");
         page = 1;
         loadData(page);
     }

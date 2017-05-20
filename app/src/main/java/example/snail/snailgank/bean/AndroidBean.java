@@ -1,16 +1,19 @@
 package example.snail.snailgank.bean;
 
+import java.util.List;
+
 /**
  * Created by admin on 2017/5/20.
  */
 
 public class AndroidBean {
-
     private String _id;
 
     private String createdAt;
 
     private String desc;
+
+    private List<String> images;
 
     private String publishedAt;
 
@@ -46,6 +49,14 @@ public class AndroidBean {
 
     public String getDesc() {
         return this.desc;
+    }
+
+    public void setImages(List<String> images) {
+        this.images = images;
+    }
+
+    public List<String> getImages() {
+        return this.images;
     }
 
     public void setPublishedAt(String publishedAt) {
@@ -102,6 +113,7 @@ public class AndroidBean {
                 "_id='" + _id + '\'' +
                 ", createdAt='" + createdAt + '\'' +
                 ", desc='" + desc + '\'' +
+                ", images=" + images +
                 ", publishedAt='" + publishedAt + '\'' +
                 ", source='" + source + '\'' +
                 ", type='" + type + '\'' +
