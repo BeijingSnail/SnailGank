@@ -20,4 +20,6 @@ public final class Constant {
     public static final String ResFragmentTag = "RESFRAGMENTTAG";
 
     public static final String GankBaseUrl = "http://gank.io/";
+
+    public static final String OPENURL = "URL";
 }

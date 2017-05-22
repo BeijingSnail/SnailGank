@@ -16,7 +16,6 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 import example.snail.snailgank.R;
 import example.snail.snailgank.base.BaseActivity;
 import example.snail.snailgank.common.ActivityPageManager;
@@ -64,7 +63,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
+
         fm = getSupportFragmentManager();
         initActionBar();
         initNavigation();

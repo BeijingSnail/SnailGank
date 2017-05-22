@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 
+import butterknife.ButterKnife;
 import example.snail.snailgank.common.ActivityPageManager;
 
 /**
@@ -28,6 +29,7 @@ public class BaseActivity extends AppCompatActivity {
         super.setContentView(layoutResID);
         view = LayoutInflater.from(this).inflate(layoutResID, null);
         setContentView(view);
+        ButterKnife.bind(this);
     }
 
     @Override

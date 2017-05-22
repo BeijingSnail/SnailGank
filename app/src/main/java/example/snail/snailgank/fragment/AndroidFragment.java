@@ -1,6 +1,7 @@
 package example.snail.snailgank.fragment;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -15,9 +16,11 @@ import java.util.List;
 
 import butterknife.Bind;
 import example.snail.snailgank.R;
+import example.snail.snailgank.activity.WebViewActivity;
 import example.snail.snailgank.adapter.AndroidAdapter;
 import example.snail.snailgank.base.BaseFragment;
 import example.snail.snailgank.bean.AndroidBean;
+import example.snail.snailgank.common.Constant;
 import example.snail.snailgank.observable.ObservableHelper;
 import example.snail.snailgank.view.SpaceItemDecoration;
 import rx.Observer;
@@ -62,7 +65,7 @@ public class AndroidFragment extends BaseFragment implements Observer<List<Andro
         androidXrv.refresh();
         adapter.setRecycleViewItemClickListener((view, position) -> {
             AndroidBean bean = (AndroidBean) adapter.getItem(position);
-            showSnackBar(position + "");
+            startActivity(new Intent(mContext, WebViewActivity.class).putExtra(Constant.OPENURL, bean.getUrl()));
         });
     }
 
