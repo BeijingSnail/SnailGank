@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +20,7 @@ import example.snail.snailgank.adapter.AndroidAdapter;
 import example.snail.snailgank.base.BaseFragment;
 import example.snail.snailgank.bean.AndroidBean;
 import example.snail.snailgank.observable.ObservableHelper;
+import example.snail.snailgank.view.SpaceItemDecoration;
 import rx.Observer;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -56,8 +58,10 @@ public class AndroidFragment extends BaseFragment implements Observer<List<Andro
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         androidXrv.setLayoutManager(layoutManager);
         androidXrv.setAdapter(adapter = new AndroidAdapter(mContext));
+        androidXrv.addItemDecoration(new SpaceItemDecoration(30));
         androidXrv.setLoadingListener(this);
         androidXrv.refresh();
+        androidXrv.addOnItemTouchListener( new RecyclerView.SimpleOnItemTouchListener());
     }
 
     public void loadData(int page) {
