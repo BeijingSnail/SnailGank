@@ -39,4 +39,8 @@ public class BaseActivity extends AppCompatActivity {
         Snackbar.make(view, strId, Snackbar.LENGTH_SHORT).show();
     }
 
+    protected void showSnackBar(String str) {
+        Snackbar.make(view, str, Snackbar.LENGTH_SHORT).show();
+    }
+
 }

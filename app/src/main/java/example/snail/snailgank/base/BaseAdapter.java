@@ -3,6 +3,7 @@ package example.snail.snailgank.base;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.View;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +21,17 @@ public abstract class BaseAdapter<T> extends RecyclerView.Adapter {
     protected Context mContext;
 
     protected LayoutInflater layoutInflater;
+
+    protected RecycleViewItemClickListener mRecycleViewItemClickListener;
+
+    @FunctionalInterface
+    public interface RecycleViewItemClickListener {
+        void onItemClick(View view, int position);
+    }
+
+    public void setRecycleViewItemClickListener(RecycleViewItemClickListener recycleViewItemClickListener) {
+        this.mRecycleViewItemClickListener = recycleViewItemClickListener;
+    }
 
     public BaseAdapter(Context context) {
         this(context, new ArrayList());
@@ -50,6 +62,10 @@ public abstract class BaseAdapter<T> extends RecyclerView.Adapter {
 
     public void setDataSet(List<T> data) {
         this.dataSet = data;
+    }
+
+    public T getItem(int position) {
+        return dataSet.get(position);
     }
 
 }

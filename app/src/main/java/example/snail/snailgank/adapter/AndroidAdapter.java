@@ -22,7 +22,7 @@ import example.snail.snailgank.bean.AndroidBean;
  * Created by admin on 2017/5/20.
  */
 
-public class AndroidAdapter extends BaseAdapter {
+public class AndroidAdapter extends BaseAdapter implements View.OnClickListener {
 
     public AndroidAdapter(Context context) {
         super(context);
@@ -31,11 +31,13 @@ public class AndroidAdapter extends BaseAdapter {
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = layoutInflater.inflate(R.layout.item_android_layout, null);
+        view.setOnClickListener(this);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+        holder.itemView.setTag(position);
 
         Object object = dataSet.get(position);
         AndroidBean androidBean = (AndroidBean) object;
@@ -63,6 +65,13 @@ public class AndroidAdapter extends BaseAdapter {
             Glide.with(mContext).load(iamgeUrl).placeholder(R.mipmap.preloading).error(R.mipmap.loading_error).into(((ViewHolder) holder).androidItemIv);
         } else {
             ((ViewHolder) holder).androidItemIv.setImageResource(R.mipmap.no_icon);
+        }
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (mRecycleViewItemClickListener != null) {
+            mRecycleViewItemClickListener.onItemClick(v, (Integer) v.getTag());
         }
     }
 
