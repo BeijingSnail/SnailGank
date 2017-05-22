@@ -1,4 +1,4 @@
-package example.snail.snailgank;
+package example.snail.snailgank.activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -17,6 +17,7 @@ import android.widget.TextView;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import example.snail.snailgank.R;
 import example.snail.snailgank.base.BaseActivity;
 import example.snail.snailgank.common.ActivityPageManager;
 import example.snail.snailgank.common.Constant;
