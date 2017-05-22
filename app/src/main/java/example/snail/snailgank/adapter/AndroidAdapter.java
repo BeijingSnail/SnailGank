@@ -60,9 +60,10 @@ public class AndroidAdapter extends BaseAdapter {
         }
 
         if (!TextUtils.isEmpty(iamgeUrl)) {
-            Glide.with(mContext).load(iamgeUrl).into(((ViewHolder) holder).androidItemIv);
+            Glide.with(mContext).load(iamgeUrl).placeholder(R.mipmap.preloading).error(R.mipmap.loading_error).into(((ViewHolder) holder).androidItemIv);
+        } else {
+            ((ViewHolder) holder).androidItemIv.setImageResource(R.mipmap.no_icon);
         }
-
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
