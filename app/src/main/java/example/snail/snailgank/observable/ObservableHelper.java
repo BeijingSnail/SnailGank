@@ -8,6 +8,8 @@ import example.snail.snailgank.bean.AndroidBean;
 import example.snail.snailgank.bean.AndroidResult;
 import example.snail.snailgank.bean.IosBean;
 import example.snail.snailgank.bean.IosResult;
+import example.snail.snailgank.bean.WelfareBean;
+import example.snail.snailgank.bean.WelfareResult;
 import example.snail.snailgank.network.GankRetrofit;
 import example.snail.snailgank.network.api.GankApi;
 import rx.Observable;
@@ -33,6 +35,13 @@ public class ObservableHelper {
                 .flatMap(ObservableHelper::getIosList);
     }
 
+    public static rx.Observable<List<WelfareBean>> getWelfareObservable(String type, int count, int page) {
+        return GankRetrofit.getRetrofit()
+                .create(GankApi.class)
+                .getWelfareDatas(type, count, page)
+                .flatMap(ObservableHelper::getWelfareList);
+    }
+
     private static Observable<List<AndroidBean>> getAndroidList(AndroidResult androidResult) {
         List<AndroidBean> androidBeanList = androidResult.getResults();
         for (AndroidBean bean : androidBeanList) {
@@ -53,6 +62,18 @@ public class ObservableHelper {
 
         return Observable.create((subscriber -> {
             subscriber.onNext(iosBeanList);
+            subscriber.onCompleted();
+        }));
+
+    }
+
+    private static Observable<List<WelfareBean>> getWelfareList(WelfareResult welfareResult) {
+        List<WelfareBean> welfareBeanList = welfareResult.getResults();
+        for (WelfareBean welfareBean : welfareBeanList) {
+            welfareBean.setCreatedAt(formatCreatedAt(welfareBean.getCreatedAt()));
+        }
+        return Observable.create((subscriber -> {
+            subscriber.onNext(welfareBeanList);
             subscriber.onCompleted();
         }));
 
