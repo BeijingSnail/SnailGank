@@ -3,13 +3,13 @@ package example.snail.snailgank.bean;
 import java.util.List;
 
 /**
- * Created by admin on 2017/5/23.
+ * Created by snail on 2017/5/23.
  */
 
 public class IosBean {
 
-    private String Id;
-    private String createdat;
+    private String _id;
+    private String createdAt;
     private String desc;
     private List<String> images;
     private String publishedat;
@@ -20,19 +20,19 @@ public class IosBean {
     private String who;
 
     public void setId(String Id) {
-        this.Id = Id;
+        this._id = Id;
     }
 
     public String getId() {
-        return Id;
+        return _id;
     }
 
-    public void setCreatedat(String createdat) {
-        this.createdat = createdat;
+    public void setCreatedAt(String createdat) {
+        this.createdAt = createdat;
     }
 
-    public String getCreatedat() {
-        return createdat;
+    public String getCreatedAt() {
+        return createdAt;
     }
 
     public void setDesc(String desc) {
@@ -97,5 +97,21 @@ public class IosBean {
 
     public String getWho() {
         return who;
+    }
+
+    @Override
+    public String toString() {
+        return "IosBean{" +
+                "_id='" + _id + '\'' +
+                ", createdAt='" + createdAt + '\'' +
+                ", desc='" + desc + '\'' +
+                ", images=" + images +
+                ", publishedat='" + publishedat + '\'' +
+                ", source='" + source + '\'' +
+                ", type='" + type + '\'' +
+                ", url='" + url + '\'' +
+                ", used=" + used +
+                ", who='" + who + '\'' +
+                '}';
     }
 }

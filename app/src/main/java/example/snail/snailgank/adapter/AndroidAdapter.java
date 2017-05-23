@@ -44,7 +44,6 @@ public class AndroidAdapter extends BaseAdapter implements View.OnClickListener 
 
         String desc = androidBean.getDesc();
         String createdAt = androidBean.getCreatedAt();
-        String url = androidBean.getUrl();
         String auth = androidBean.getWho();
         List<String> images = androidBean.getImages();
         String iamgeUrl = null;

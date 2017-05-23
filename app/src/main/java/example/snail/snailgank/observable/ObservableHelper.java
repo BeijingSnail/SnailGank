@@ -1,5 +1,7 @@
 package example.snail.snailgank.observable;
 
+import android.text.TextUtils;
+
 import java.util.List;
 
 import example.snail.snailgank.bean.AndroidBean;
@@ -38,7 +40,7 @@ public class ObservableHelper {
         }
 
         return Observable.create((subscriber -> {
-            subscriber.onNext(androidResult.getResults());
+            subscriber.onNext(androidBeanList);
             subscriber.onCompleted();
         }));
     }
@@ -46,16 +48,20 @@ public class ObservableHelper {
     private static Observable<List<IosBean>> getIosList(IosResult iosResult) {
         List<IosBean> iosBeanList = iosResult.getResults();
         for (IosBean iosBean : iosBeanList) {
-            iosBean.setCreatedat(formatCreatedAt(iosBean.getCreatedat()));
+            iosBean.setCreatedAt(formatCreatedAt(iosBean.getCreatedAt()));
         }
 
         return Observable.create((subscriber -> {
-            subscriber.onNext(iosResult.getResults());
+            subscriber.onNext(iosBeanList);
             subscriber.onCompleted();
         }));
+
     }
 
     private static String formatCreatedAt(String createdAt) {
+        if (TextUtils.isEmpty(createdAt)) {
+            return "";
+        }
         return createdAt.substring(0, createdAt.indexOf("T"));
     }
 

@@ -60,7 +60,8 @@ public class AndroidFragment extends BaseFragment implements Observer<List<Andro
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         androidXrv.setLayoutManager(layoutManager);
         androidXrv.setAdapter(adapter = new AndroidAdapter(mContext));
-        androidXrv.addItemDecoration(new SpaceItemDecoration(30));
+        //与xml中的paddingRight数值一致
+        androidXrv.addItemDecoration(new SpaceItemDecoration(10));
         androidXrv.setLoadingListener(this);
         androidXrv.refresh();
         adapter.setRecycleViewItemClickListener((view, position) -> {
@@ -91,7 +92,7 @@ public class AndroidFragment extends BaseFragment implements Observer<List<Andro
     }
 
     @Override
-    public void onNext(List<AndroidBean> androidBeen) {tatus
+    public void onNext(List<AndroidBean> androidBeen) {
         if (page == 1) {
             adapter.removeAll();
             adapter.setDataSet(androidBeen);
