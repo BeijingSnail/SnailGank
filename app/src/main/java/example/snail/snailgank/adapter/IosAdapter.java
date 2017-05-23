@@ -22,7 +22,7 @@ import example.snail.snailgank.bean.IosBean;
  * Created by snail on 2017/5/23.
  */
 
-public class IosAdapter extends BaseAdapter {
+public class IosAdapter extends BaseAdapter implements View.OnClickListener {
 
 
     public IosAdapter(Context context) {
@@ -32,11 +32,14 @@ public class IosAdapter extends BaseAdapter {
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = layoutInflater.inflate(R.layout.item_ios_layout, null);
+        view.setOnClickListener(this);
         return new IosHolder(view);
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+        holder.itemView.setTag(position);
+
         IosBean iosBean = (IosBean) dataSet.get(position);
         String desc = iosBean.getDesc();
         String creatAt = iosBean.getCreatedAt();
@@ -61,6 +64,13 @@ public class IosAdapter extends BaseAdapter {
             Glide.with(mContext).load(imageUrl).placeholder(R.mipmap.preloading).error(R.mipmap.loading_error).into(((IosHolder) holder).iosItemIv);
         } else {
             ((IosHolder) holder).iosItemIv.setVisibility(View.GONE);
+        }
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (mRecycleViewItemClickListener != null) {
+            mRecycleViewItemClickListener.onItemClick(v, (Integer) v.getTag());
         }
     }
 
