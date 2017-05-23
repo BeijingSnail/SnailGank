@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 
 import java.util.List;
@@ -57,6 +58,9 @@ public class IosFragment extends BaseFragment implements Observer<List<IosBean>>
     private void initXRecyclerView() {
         StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         iosXrv.setLayoutManager(layoutManager);
+        //设置刷新风格
+        iosXrv.setRefreshProgressStyle(ProgressStyle.BallSpinFadeLoader);
+        iosXrv.setLoadingMoreProgressStyle(ProgressStyle.BallSpinFadeLoader);
         iosXrv.setAdapter(adapter = new IosAdapter(mContext));
         iosXrv.addItemDecoration(new SpaceItemDecoration(10));
         iosXrv.setLoadingListener(this);
