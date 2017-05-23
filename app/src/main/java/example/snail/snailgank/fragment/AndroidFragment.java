@@ -91,7 +91,7 @@ public class AndroidFragment extends BaseFragment implements Observer<List<Andro
     }
 
     @Override
-    public void onNext(List<AndroidBean> androidBeen) {
+    public void onNext(List<AndroidBean> androidBeen) {tatus
         if (page == 1) {
             adapter.removeAll();
             adapter.setDataSet(androidBeen);
@@ -99,7 +99,6 @@ public class AndroidFragment extends BaseFragment implements Observer<List<Andro
             adapter.addData(androidBeen);
         }
     }
-
 
     @Override
     public void onRefresh() {
