@@ -26,4 +26,7 @@ public final class Constant {
     public static final String OPENURL = "URL";
 
     public static final int REFRESHSTYLE = ProgressStyle.BallSpinFadeLoader;
+
+    public static final String POSITION = "position";
+    public static final String UELLIST = "urllist";
 }

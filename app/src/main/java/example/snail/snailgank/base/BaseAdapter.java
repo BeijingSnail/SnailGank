@@ -64,6 +64,10 @@ public abstract class BaseAdapter<T> extends RecyclerView.Adapter {
         this.dataSet = data;
     }
 
+    public List<T> getDataSet() {
+        return dataSet;
+    }
+
     public T getItem(int position) {
         return dataSet.get(position);
     }

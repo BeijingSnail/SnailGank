@@ -1,6 +1,7 @@
 package example.snail.snailgank.fragment;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -11,10 +12,12 @@ import android.view.ViewGroup;
 
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
 import example.snail.snailgank.R;
+import example.snail.snailgank.activity.PictureActivity;
 import example.snail.snailgank.adapter.WelfareAdapter;
 import example.snail.snailgank.base.BaseFragment;
 import example.snail.snailgank.bean.WelfareBean;
@@ -36,6 +39,7 @@ public class WelfareFragment extends BaseFragment implements XRecyclerView.Loadi
     XRecyclerView welfareXrv;
     private int page = 0;
     private WelfareAdapter adapter;
+
 
     public WelfareFragment() {
         // Required empty public constructor
@@ -64,6 +68,13 @@ public class WelfareFragment extends BaseFragment implements XRecyclerView.Loadi
         welfareXrv.setAdapter(adapter = new WelfareAdapter(mContext));
         welfareXrv.setLoadingListener(this);
         welfareXrv.refresh();
+        adapter.setRecycleViewItemClickListener((view, position) -> {
+            startActivity(new Intent(mContext, PictureActivity.class)
+                    .putExtra(Constant.POSITION, position)
+                    .putStringArrayListExtra(Constant.UELLIST,transform(adapter.getDataSet()))
+            );
+        });
+
         page = 1;
         loadData(page);
     }
@@ -110,5 +121,16 @@ public class WelfareFragment extends BaseFragment implements XRecyclerView.Loadi
         } else {
             adapter.addData(welfareBeen);
         }
+    }
+
+    /**
+     * 提取WelfareBean中的图片url
+     */
+    public ArrayList<String> transform(List<WelfareBean> list) {
+        ArrayList<String> arrayList = new ArrayList<>();
+        for (WelfareBean welfareBean : list) {
+            arrayList.add(welfareBean.getUrl());
+        }
+        return arrayList;
     }
 }

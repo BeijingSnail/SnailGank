@@ -59,7 +59,7 @@ public class WelfareAdapter extends BaseAdapter implements View.OnClickListener 
     @Override
     public void onClick(View v) {
         if (mRecycleViewItemClickListener != null) {
-            mRecycleViewItemClickListener.onItemClick(v, (Integer) v.getTag());
+            mRecycleViewItemClickListener.onItemClick(v, (int) v.getTag());
         }
     }
 
