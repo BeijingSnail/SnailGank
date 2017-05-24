@@ -7,4 +7,5 @@
 
 
     <color name="textColor">#3e3d3d</color>
+    <color name="textWhite">#fdfdfd</color>
 </resources>

@@ -1,5 +1,7 @@
 package example.snail.snailgank.common;
 
+import com.jcodecraeer.xrecyclerview.ProgressStyle;
+
 /**
  * 常量表
  * Created by Snail on 2017/5/19.
@@ -22,4 +24,6 @@ public final class Constant {
     public static final String GankBaseUrl = "http://gank.io/";
 
     public static final String OPENURL = "URL";
+
+    public static final int REFRESHSTYLE = ProgressStyle.BallSpinFadeLoader;
 }

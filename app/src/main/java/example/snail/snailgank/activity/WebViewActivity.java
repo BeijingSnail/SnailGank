@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
-import android.util.Log;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -48,8 +47,6 @@ public class WebViewActivity extends BaseActivity {
         if (!TextUtils.isEmpty(url)) {
             progressWebview.loadUrl(url);
             String title = progressWebview.getTitle();
-            Log.d("zzq", "title:" + title);
-
         }
     }
 

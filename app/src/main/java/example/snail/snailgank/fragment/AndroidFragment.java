@@ -10,7 +10,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 
 import java.util.List;
@@ -61,8 +60,8 @@ public class AndroidFragment extends BaseFragment implements Observer<List<Andro
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         androidXrv.setLayoutManager(layoutManager);
         //设置刷新风格
-        androidXrv.setRefreshProgressStyle(ProgressStyle.BallSpinFadeLoader);
-        androidXrv.setLoadingMoreProgressStyle(ProgressStyle.BallSpinFadeLoader);
+        androidXrv.setRefreshProgressStyle(Constant.REFRESHSTYLE);
+        androidXrv.setLoadingMoreProgressStyle(Constant.REFRESHSTYLE);
         androidXrv.setAdapter(adapter = new AndroidAdapter(mContext));
         //与xml中的paddingRight数值一致
         androidXrv.addItemDecoration(new SpaceItemDecoration(10));
