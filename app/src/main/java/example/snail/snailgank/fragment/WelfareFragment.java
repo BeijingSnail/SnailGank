@@ -103,7 +103,6 @@ public class WelfareFragment extends BaseFragment implements XRecyclerView.Loadi
 
     @Override
     public void onNext(List<WelfareBean> welfareBeen) {
-
         if (page == 1) {
             adapter.removeAll();
             adapter.setDataSet(welfareBeen);

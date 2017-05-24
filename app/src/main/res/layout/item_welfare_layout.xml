@@ -1,52 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="210dp"
-    android:gravity="center_horizontal">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="5dp"
+    app:cardElevation="5dp"
+    android:background="?android:attr/selectableItemBackground"
+    android:layout_height="210dp">
 
-    <ImageView
-        android:id="@+id/welfare_item_iv"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="210dp"
-        android:scaleType="centerCrop"
-        android:src="@mipmap/ic_launcher" />
+        android:layout_height="match_parent">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:layout_alignParentBottom="true"
-        android:background="#99121b16"
-        android:gravity="right|center_vertical"
-        android:paddingRight="10dp">
+        <ImageView
+            android:id="@+id/welfare_item_iv"
+            android:layout_width="match_parent"
+            android:layout_height="210dp"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/ic_launcher" />
 
-        <TextView
-            android:id="@+id/welfare_auth_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="right"
-            android:textColor="@color/textWhite"
-            android:maxLines="1"
-            android:textSize="10sp"
-            tools:text="daimajia" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_alignParentBottom="true"
+            android:background="#99121b16"
+            android:gravity="right|center_vertical"
+            android:paddingRight="10dp">
 
-        <View
-            android:layout_width="1px"
-            android:layout_height="10dp"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="3dp"
-            android:layout_marginRight="3dp"
-            android:background="@color/textWhite" />
+            <TextView
+                android:id="@+id/welfare_auth_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:maxLines="1"
+                android:textColor="@color/textWhite"
+                android:textSize="10sp"
+                tools:text="daimajia" />
 
-        <TextView
-            android:id="@+id/welfare_time_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/textWhite"
-            android:textSize="10sp"
-            tools:text="5-23" />
+            <View
+                android:layout_width="1px"
+                android:layout_height="10dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp"
+                android:background="@color/textWhite" />
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/welfare_time_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/textWhite"
+                android:textSize="10sp"
+                tools:text="5-23" />
 
-</RelativeLayout>
+        </LinearLayout>
+
+    </RelativeLayout>
+</android.support.v7.widget.CardView>
