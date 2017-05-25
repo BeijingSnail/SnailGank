@@ -8,6 +8,8 @@ import example.snail.snailgank.bean.AndroidBean;
 import example.snail.snailgank.bean.AndroidResult;
 import example.snail.snailgank.bean.IosBean;
 import example.snail.snailgank.bean.IosResult;
+import example.snail.snailgank.bean.ResBean;
+import example.snail.snailgank.bean.ResResult;
 import example.snail.snailgank.bean.WelfareBean;
 import example.snail.snailgank.bean.WelfareResult;
 import example.snail.snailgank.network.GankRetrofit;
@@ -40,6 +42,13 @@ public class ObservableHelper {
                 .create(GankApi.class)
                 .getWelfareDatas(type, count, page)
                 .flatMap(ObservableHelper::getWelfareList);
+    }
+
+    public static Observable<List<ResBean>> getResObservable(String type, int count, int page) {
+        return GankRetrofit.getRetrofit()
+                .create(GankApi.class)
+                .getResDatas(type, count, page)
+                .flatMap(ObservableHelper::getResList);
     }
 
     private static Observable<List<AndroidBean>> getAndroidList(AndroidResult androidResult) {
@@ -76,7 +85,17 @@ public class ObservableHelper {
             subscriber.onNext(welfareBeanList);
             subscriber.onCompleted();
         }));
+    }
 
+    private static Observable<List<ResBean>> getResList(ResResult resResult) {
+        List<ResBean> resBeanList = resResult.getResults();
+        for (ResBean resBean : resBeanList) {
+            resBean.setCreatedAt(formatCreatedAt(resBean.getCreatedAt()));
+        }
+        return Observable.create((subscriber -> {
+            subscriber.onNext(resBeanList);
+            subscriber.onCompleted();
+        }));
     }
 
     private static String formatCreatedAt(String createdAt) {
