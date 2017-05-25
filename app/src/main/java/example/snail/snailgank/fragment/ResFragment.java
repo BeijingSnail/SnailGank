@@ -1,6 +1,7 @@
 package example.snail.snailgank.fragment;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -15,6 +16,7 @@ import java.util.List;
 
 import butterknife.Bind;
 import example.snail.snailgank.R;
+import example.snail.snailgank.activity.WebViewActivity;
 import example.snail.snailgank.adapter.ResAdapter;
 import example.snail.snailgank.base.BaseFragment;
 import example.snail.snailgank.bean.ResBean;
@@ -67,7 +69,10 @@ public class ResFragment extends BaseFragment implements XRecyclerView.LoadingLi
         resXrv.setAdapter(adapter = new ResAdapter(mContext));
         resXrv.setLoadingListener(this);
         resXrv.refresh();
-
+        adapter.setRecycleViewItemClickListener((view, position) -> {
+            ResBean bean = (ResBean) adapter.getItem(position);
+            startActivity(new Intent(mContext, WebViewActivity.class).putExtra(Constant.OPENURL, bean.getUrl()));
+        });
     }
 
     public void loadData(int page) {
@@ -90,9 +95,9 @@ public class ResFragment extends BaseFragment implements XRecyclerView.LoadingLi
 
     @Override
     public void onCompleted() {
-        if(page==1){
+        if (page == 1) {
             resXrv.refreshComplete();
-        }else{
+        } else {
             resXrv.loadMoreComplete();
         }
     }
@@ -104,10 +109,10 @@ public class ResFragment extends BaseFragment implements XRecyclerView.LoadingLi
 
     @Override
     public void onNext(List<ResBean> resBeen) {
-        if(page==1){
+        if (page == 1) {
             adapter.removeAll();
             adapter.setDataSet(resBeen);
-        }else{
+        } else {
             adapter.addData(resBeen);
         }
     }

@@ -16,7 +16,7 @@ import example.snail.snailgank.bean.ResBean;
  * Created by admin on 2017/5/25.
  */
 
-public class ResAdapter extends BaseAdapter {
+public class ResAdapter extends BaseAdapter implements View.OnClickListener {
 
     public ResAdapter(Context context) {
         super(context);
@@ -25,15 +25,24 @@ public class ResAdapter extends BaseAdapter {
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = layoutInflater.inflate(R.layout.item_res_layout, null);
+        view.setOnClickListener(this);
         return new ResHolder(view);
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+        holder.itemView.setTag(position);
         ResBean resBean = (ResBean) dataSet.get(position);
         ((ResHolder) holder).resDescTv.setText(resBean.getDesc());
         ((ResHolder) holder).resAuthTv.setText(resBean.getWho());
         ((ResHolder) holder).resTimeTv.setText(resBean.getCreatedAt());
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (mRecycleViewItemClickListener != null) {
+            mRecycleViewItemClickListener.onItemClick(v, (Integer) v.getTag());
+        }
     }
 
     class ResHolder extends RecyclerView.ViewHolder {
