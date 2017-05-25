@@ -29,6 +29,7 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
 /**
+ * Welfare Fragment
  * A simple {@link Fragment} subclass.
  */
 public class WelfareFragment extends BaseFragment implements XRecyclerView.LoadingListener, Observer<List<WelfareBean>> {

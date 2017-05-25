@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import butterknife.ButterKnife;
 
 /**
+ * Fragment 基类
  * A simple {@link Fragment} subclass.
  */
 public abstract class BaseFragment extends Fragment {

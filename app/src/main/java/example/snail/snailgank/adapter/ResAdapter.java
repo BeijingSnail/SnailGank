@@ -13,7 +13,8 @@ import example.snail.snailgank.base.BaseAdapter;
 import example.snail.snailgank.bean.ResBean;
 
 /**
- * Created by admin on 2017/5/25.
+ * 拓展资源 适配器类
+ * Created by snial on 2017/5/25.
  */
 
 public class ResAdapter extends BaseAdapter implements View.OnClickListener {

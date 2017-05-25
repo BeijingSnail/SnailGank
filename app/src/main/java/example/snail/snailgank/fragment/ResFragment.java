@@ -28,6 +28,7 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
 /**
+ * Res Fragment
  * A simple {@link Fragment} subclass.
  */
 public class ResFragment extends BaseFragment implements XRecyclerView.LoadingListener, Observer<List<ResBean>> {

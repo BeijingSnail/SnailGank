@@ -11,7 +11,6 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.Bind;
 import example.snail.snailgank.R;
@@ -35,7 +34,6 @@ public class PictureActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_picture);
         initData();
-
     }
 
     private void initData() {
@@ -45,12 +43,14 @@ public class PictureActivity extends BaseActivity {
         if (urlList == null || urlList.isEmpty()) {
             return;
         }
-        List<View> views = new ArrayList<>();
+
+        ArrayList<View> views = new ArrayList<>();
         for (String url : urlList) {
             ImageView imageView = new ImageView(this);
             Glide.with(this).load(url).placeholder(R.mipmap.preloading).error(R.mipmap.loading_error).into(imageView);
             views.add(imageView);
         }
+
         PictureAdapter adapter = new PictureAdapter(views);
         pictureVp.setAdapter(adapter);
         pictureVp.setCurrentItem(position);

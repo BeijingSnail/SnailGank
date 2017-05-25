@@ -19,6 +19,7 @@ import example.snail.snailgank.base.BaseAdapter;
 import example.snail.snailgank.bean.AndroidBean;
 
 /**
+ * Android 适配器类
  * Created by admin on 2017/5/20.
  */
 

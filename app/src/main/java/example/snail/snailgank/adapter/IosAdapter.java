@@ -19,6 +19,7 @@ import example.snail.snailgank.base.BaseAdapter;
 import example.snail.snailgank.bean.IosBean;
 
 /**
+ * Ios  适配器类
  * Created by snail on 2017/5/23.
  */
 

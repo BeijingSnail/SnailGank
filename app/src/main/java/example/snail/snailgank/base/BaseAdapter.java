@@ -10,7 +10,6 @@ import java.util.List;
 
 /**
  * 适配器基类
- * <p>
  * Created by Snail on 2017/5/20.
  */
 

@@ -12,6 +12,7 @@ import butterknife.ButterKnife;
 import example.snail.snailgank.common.ActivityPageManager;
 
 /**
+ * Activity 基类
  * Created by snail on 2017/5/18.
  */
 

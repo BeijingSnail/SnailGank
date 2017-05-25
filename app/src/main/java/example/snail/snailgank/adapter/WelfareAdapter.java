@@ -17,17 +17,15 @@ import example.snail.snailgank.base.BaseAdapter;
 import example.snail.snailgank.bean.WelfareBean;
 
 /**
- * 福利fragment适配器
+ * 福利 适配器
  * Created by snail on 2017/5/24.
  */
 
 public class WelfareAdapter extends BaseAdapter implements View.OnClickListener {
 
-
     public WelfareAdapter(Context context) {
         super(context);
     }
-
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {

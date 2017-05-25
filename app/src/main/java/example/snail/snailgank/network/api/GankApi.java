@@ -9,6 +9,7 @@ import retrofit2.http.Path;
 import rx.Observable;
 
 /**
+ * Api 类
  * Created by Snail on 2017/5/19.
  */
 
