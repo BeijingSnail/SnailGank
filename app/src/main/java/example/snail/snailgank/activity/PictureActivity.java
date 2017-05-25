@@ -3,6 +3,7 @@ package example.snail.snailgank.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
@@ -20,7 +21,6 @@ import example.snail.snailgank.common.Constant;
 
 public class PictureActivity extends BaseActivity {
 
-    private int position;
 
     @Bind(R.id.picture_right_up_tv)
     TextView pictureRightUpTv;
@@ -33,12 +33,21 @@ public class PictureActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_picture);
+        initToolbar();
         initData();
+    }
+
+    private void initToolbar() {
+        setSupportActionBar(pictureToolbar);
+        pictureToolbar.setNavigationOnClickListener(v -> finish());
+        ActionBar bar = getSupportActionBar();
+        bar.setDisplayHomeAsUpEnabled(true);
+        bar.setTitle(R.string.WelfarePicture);
     }
 
     private void initData() {
         Intent intent = getIntent();
-        position = intent.getIntExtra(Constant.POSITION, 0);
+        int position = intent.getIntExtra(Constant.POSITION, 0);
         ArrayList<String> urlList = intent.getStringArrayListExtra(Constant.UELLIST);
         if (urlList == null || urlList.isEmpty()) {
             return;
@@ -51,9 +60,28 @@ public class PictureActivity extends BaseActivity {
             views.add(imageView);
         }
 
+        String format = getResources().getString(R.string.PictureCount);
+        pictureRightUpTv.setText(String.format(format, position + 1 + "", urlList.size() + ""));
+
         PictureAdapter adapter = new PictureAdapter(views);
         pictureVp.setAdapter(adapter);
         pictureVp.setCurrentItem(position);
+        pictureVp.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                pictureRightUpTv.setText(String.format(format, position + 1 + "", urlList.size() + ""));
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
     }
 
 

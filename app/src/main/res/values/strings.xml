@@ -7,4 +7,6 @@
     <string name="ClickAgain">再按一次退出程序</string>
     <string name="HomePage">首页</string>
     <string name="More">更多</string>
+    <string name="PictureCount">%1$s/%2$s</string>
+    <string name="WelfarePicture">福利图片</string>
 </resources>

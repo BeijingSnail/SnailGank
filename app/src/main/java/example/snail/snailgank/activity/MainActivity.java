@@ -120,6 +120,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
         ActionBarDrawerToggle mDrawerToggle = new ActionBarDrawerToggle(this, mianDrawerLayout, mainToolbar, R.string.drawer_open, R.string.drawer_close);
         mDrawerToggle.syncState();
         mianDrawerLayout.addDrawerListener(mDrawerToggle);
+        mainToolbarTv.setText("Android");
     }
 
     @Override
@@ -150,6 +151,10 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
         hindeAllFragment(transaction);
         switch (index) {
             case Constant.ANDROIDFRAGMENT:
+                //设置左侧item联动radioGrup
+                mainNavigationView.setCheckedItem(R.id.item_android);
+                //设置title的显示
+                mainToolbarTv.setText("Android");
                 if (androidFragment == null) {
                     androidFragment = new AndroidFragment();
                     transaction.add(R.id.main_content, androidFragment, Constant.AndroidFragmentTag);
@@ -158,6 +163,8 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
                 }
                 break;
             case Constant.IOSFRAGMENT:
+                mainNavigationView.setCheckedItem(R.id.item_ios);
+                mainToolbarTv.setText("IOS");
                 if (iosFragment == null) {
                     iosFragment = new IosFragment();
                     transaction.add(R.id.main_content, iosFragment, Constant.IosFragmentTag);
@@ -166,6 +173,8 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
                 }
                 break;
             case Constant.WELFAREFRAGMENT:
+                mainNavigationView.setCheckedItem(R.id.item_welfare);
+                mainToolbarTv.setText(R.string.Welfare);
                 if (welfareFragment == null) {
                     welfareFragment = new WelfareFragment();
                     transaction.add(R.id.main_content, welfareFragment, Constant.WelfareFragmentTag);
@@ -174,6 +183,8 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
                 }
                 break;
             case Constant.RESFRAGMENT:
+                mainNavigationView.setCheckedItem(R.id.item_res);
+                mainToolbarTv.setText(R.string.ExpandingResources);
                 if (resFragment == null) {
                     resFragment = new ResFragment();
                     transaction.add(R.id.main_content, resFragment, Constant.ResFragmentTag);
