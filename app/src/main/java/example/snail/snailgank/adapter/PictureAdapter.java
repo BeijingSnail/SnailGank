@@ -1,14 +1,17 @@
 package example.snail.snailgank.adapter;
 
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
+import android.content.Context;
 import android.support.v4.view.PagerAdapter;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import java.util.ArrayList;
+import com.bumptech.glide.Glide;
+
+import java.util.List;
+
+import example.snail.snailgank.R;
 
 /**
  * 展示图片的ViewPager 适配器类
@@ -17,15 +20,21 @@ import java.util.ArrayList;
 
 public class PictureAdapter extends PagerAdapter {
 
-    private ArrayList<View> pageViews;
+    private List<String> urlList;
 
-    public PictureAdapter(ArrayList<View> list) {
-        this.pageViews = list;
+    private LayoutInflater inflater;
+
+    private Context mContext;
+
+    public PictureAdapter(Context context, List<String> list) {
+        this.urlList = list;
+        this.mContext = context;
+        this.inflater = LayoutInflater.from(mContext);
     }
 
     @Override
     public int getCount() {
-        return pageViews.size();
+        return urlList.size();
     }
 
     @Override
@@ -35,32 +44,18 @@ public class PictureAdapter extends PagerAdapter {
 
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {
-        ImageView imageView = (ImageView) pageViews.get(position);
-//        recycling(imageView);
-        container.removeView(imageView);
+        container.removeView((View) object);
     }
 
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
-        container.addView(pageViews.get(position));
-        return pageViews.get(position);
+
+        String url = urlList.get(position);
+        View view = inflater.inflate(R.layout.item_picture_layout, container, false);
+        ImageView imageView = (ImageView) view.findViewById(R.id.item_pic_iv);
+        Glide.with(mContext).load(url).placeholder(R.mipmap.preloading).error(R.mipmap.loading_error).into(imageView);
+        container.addView(view);
+        return view;
     }
 
-
-    private void recycling(ImageView iv) {
-
-        if (iv == null)
-            return;
-        Drawable drawable = iv.getDrawable();
-        if (drawable != null && drawable instanceof BitmapDrawable) {
-            BitmapDrawable bitmapDrawable = (BitmapDrawable) drawable;
-            Bitmap bitmap = bitmapDrawable.getBitmap();
-            if (bitmap != null && !bitmap.isRecycled()) {
-                bitmap.recycle();
-                bitmap = null;
-            }
-        }
-        //希望做一次垃圾回收
-        System.gc();
-    }
 }
