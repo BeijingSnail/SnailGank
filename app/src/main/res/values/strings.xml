@@ -9,4 +9,5 @@
     <string name="More">更多</string>
     <string name="PictureCount">%1$s/%2$s</string>
     <string name="WelfarePicture">福利图片</string>
+    <string name="ChangeTheme">更换主题</string>
 </resources>

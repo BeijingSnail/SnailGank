@@ -9,7 +9,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 
 import butterknife.ButterKnife;
+import example.snail.snailgank.R;
 import example.snail.snailgank.common.ActivityPageManager;
+import example.snail.snailgank.utils.PreferencesManager;
 
 /**
  * Activity 基类
@@ -23,6 +25,10 @@ public class BaseActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ActivityPageManager.getInstance().addActivity(this);
+        //获取sp保存的themId并设置默认值
+        int appThem = PreferencesManager.getInstance(this).get("themId", R.style.LightBlueTheme);
+        //设置主题
+        setTheme(appThem);
     }
 
     @Override

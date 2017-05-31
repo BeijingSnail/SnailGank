@@ -27,6 +27,10 @@
     </item>
     <item android:title="@string/More">
         <menu>
+            <item
+                android:id="@+id/item_skin"
+                android:icon="@mipmap/skin_icon"
+                android:title="@string/ChangeTheme"></item>
 
         </menu>
     </item>

@@ -33,11 +33,11 @@ public class PictureActivity extends BaseActivity {
     }
 
     private void initToolbar() {
+        pictureToolbar.setTitle(R.string.WelfarePicture);
         setSupportActionBar(pictureToolbar);
         pictureToolbar.setNavigationOnClickListener(v -> finish());
         ActionBar bar = getSupportActionBar();
         bar.setDisplayHomeAsUpEnabled(true);
-        bar.setTitle(R.string.WelfarePicture);
     }
 
     private void initData() {

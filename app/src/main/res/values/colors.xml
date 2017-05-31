@@ -3,7 +3,7 @@
     <!--<color name="colorPrimary">#3F51B5</color>-->
     <!--<color name="colorPrimaryDark">#303F9F</color>-->
     <!--<color name="colorAccent">#FF4081</color>-->
-    <!--<color name="colorNavigation">#32303f9f</color>-->
+    <!--<color name="colorNavigation">#32000000</color>-->
 
     <!--<color name="colorPrimary">#4CAF50</color>-->
     <!--<color name="colorPrimaryDark">#388E3C</color>-->
@@ -117,4 +117,5 @@
     <color name="line_grey">#D7D7D7</color>
     <color name="textColor">#3e3d3d</color>
     <color name="textWhite">#fdfdfd</color>
+    <color name="transparent">#00000000</color>
 </resources>

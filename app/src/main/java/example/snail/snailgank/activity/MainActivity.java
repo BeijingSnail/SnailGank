@@ -1,5 +1,6 @@
 package example.snail.snailgank.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
@@ -18,12 +19,14 @@ import android.widget.TextView;
 import butterknife.Bind;
 import example.snail.snailgank.R;
 import example.snail.snailgank.base.BaseActivity;
+import example.snail.snailgank.base.dialog.ChangeThemDialog;
 import example.snail.snailgank.common.ActivityPageManager;
 import example.snail.snailgank.common.Constant;
 import example.snail.snailgank.fragment.AndroidFragment;
 import example.snail.snailgank.fragment.IosFragment;
 import example.snail.snailgank.fragment.ResFragment;
 import example.snail.snailgank.fragment.WelfareFragment;
+import example.snail.snailgank.utils.PreferencesManager;
 
 public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedChangeListener {
 
@@ -95,6 +98,21 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
                 case R.id.item_res:
                     setTabSelection(Constant.RESFRAGMENT);
                     resRb.setChecked(true);
+                    break;
+                case R.id.item_skin:
+                    mainNavigationView.setCheckedItem(R.id.item_skin);
+                    ChangeThemDialog.Builder builder = new ChangeThemDialog.Builder(this);
+                    builder.setOnSelectClickListener((view, them) -> {
+                        PreferencesManager.getInstance(this).put("themId", them);
+
+                        Intent intent = getIntent();
+                        overridePendingTransition(0, 0);
+                        finish();
+                        overridePendingTransition(0, 0);
+                        startActivity(intent);
+                    });
+                    ChangeThemDialog dialog = builder.creat();
+                    dialog.show();
                     break;
             }
             closeDrawerLayout();
