@@ -121,7 +121,6 @@
         <item name="colorAccent">@color/grey_blue_primary_light</item>
     </style>
 
-
     <style name="radiobutton_bottom">
         <item name="android:textSize">10sp</item>
         <item name="android:textColor">@drawable/radiobutton_text_color_style</item>
@@ -142,6 +141,20 @@
         <item name="android:windowBackground">@color/transparent</item><!-- 自己想要的背景 -->
         <item name="android:backgroundDimEnabled">true</item><!-- 模糊 -->
         <item name="android:windowFullscreen">true</item>
+    </style>
+
+    <style name="aboutLineStyle">
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_marginRight">10dp</item>
+        <item name="android:background">#f3433a3a</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+    </style>
+
+    <style name="aboutTitleStyle">
+        <item name="android:textSize">28sp</item>
+        <item name="android:textColor">?attr/colorPrimary</item>
+        <item name="android:layout_margin">5dp</item>
     </style>
 
 </resources>

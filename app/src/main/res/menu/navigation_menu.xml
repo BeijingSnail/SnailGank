@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:title="@string/HomePage">
         <menu>
             <group android:checkableBehavior="single">
@@ -31,6 +30,10 @@
                 android:id="@+id/item_skin"
                 android:icon="@mipmap/skin_icon"
                 android:title="@string/ChangeTheme"></item>
+            <item
+                android:id="@+id/about"
+                android:icon="@mipmap/about_icon"
+                android:title="@string/About"></item>
 
         </menu>
     </item>

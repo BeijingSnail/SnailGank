@@ -10,4 +10,14 @@
     <string name="PictureCount">%1$s/%2$s</string>
     <string name="WelfarePicture">福利图片</string>
     <string name="ChangeTheme">更换主题</string>
+    <string name="About">关于</string>
+    <string name="Author">作者</string>
+    <string name="AboutGithub">https://github.com/BeijingSnail</string>
+    <string name="Thank">感谢</string>
+    <string name="DataSources">http://gank.io</string>
+    <string name="Copyright">版权</string>
+    <string name="AboutCopyright">版权归作者所有</string>
+    <string name="AboutPurpose">该项目用于学习研究，请勿用于商业用途</string>
+
+
 </resources>

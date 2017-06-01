@@ -19,7 +19,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.WebViewActivity" />
-        <activity android:name=".activity.PictureActivity"></activity>
+        <activity android:name=".activity.PictureActivity" />
+        <activity android:name=".activity.AboutActivity"></activity>
     </application>
 
 </manifest>

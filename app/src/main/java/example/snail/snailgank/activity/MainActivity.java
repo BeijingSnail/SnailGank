@@ -100,7 +100,6 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
                     resRb.setChecked(true);
                     break;
                 case R.id.item_skin:
-                    mainNavigationView.setCheckedItem(R.id.item_skin);
                     ChangeThemDialog.Builder builder = new ChangeThemDialog.Builder(this);
                     builder.setOnSelectClickListener((view, them) -> {
                         PreferencesManager.getInstance(this).put("themId", them);
@@ -113,6 +112,9 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
                     });
                     ChangeThemDialog dialog = builder.creat();
                     dialog.show();
+                    break;
+                case R.id.about:
+                    startActivity(new Intent(this, AboutActivity.class));
                     break;
             }
             closeDrawerLayout();

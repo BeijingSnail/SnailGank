@@ -29,4 +29,7 @@ public final class Constant {
 
     public static final String POSITION = "position";
     public static final String UELLIST = "urllist";
+
+    public static final String SnialGit = "https://github.com/BeijingSnail";
+    public static final String GankIo = "http://gank.io";
 }
