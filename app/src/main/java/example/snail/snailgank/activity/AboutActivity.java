@@ -25,6 +25,13 @@ public class AboutActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
+        initToolbar();
+    }
+
+    private void initToolbar() {
+        aboutToolbar.setTitle(R.string.About);
+        setSupportActionBar(aboutToolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         aboutToolbar.setNavigationOnClickListener(v -> finish());
     }
 
