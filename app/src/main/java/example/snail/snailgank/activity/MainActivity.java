@@ -1,14 +1,19 @@
 package example.snail.snailgank.activity;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.annotation.DrawableRes;
 import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.graphics.drawable.DrawableCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
+import android.util.TypedValue;
 import android.view.Gravity;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
@@ -28,6 +33,8 @@ import example.snail.snailgank.fragment.ResFragment;
 import example.snail.snailgank.fragment.WelfareFragment;
 import example.snail.snailgank.utils.PreferencesManager;
 
+import static example.snail.snailgank.R.id.android_rb;
+
 public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedChangeListener {
 
     @Bind(R.id.main_toolbar_tv)
@@ -45,7 +52,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
     @Bind(R.id.main_radio_group)
     RadioGroup mainRadioGroup;
 
-    @Bind(R.id.android_rb)
+    @Bind(android_rb)
     RadioButton androidRb;
     @Bind(R.id.ios_rb)
     RadioButton iosRb;
@@ -123,6 +130,48 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
     }
 
     /**
+     * 所有RadioButton恢复初始值
+     */
+    public void radioButtonReset() {
+        androidRb.setCompoundDrawablesWithIntrinsicBounds(null, getResources().getDrawable(R.mipmap.android_up), null, null);
+        iosRb.setCompoundDrawablesWithIntrinsicBounds(null, getResources().getDrawable(R.mipmap.ios_up), null, null);
+        welfareRb.setCompoundDrawablesWithIntrinsicBounds(null, getResources().getDrawable(R.mipmap.welfare_up), null, null);
+        resRb.setCompoundDrawablesWithIntrinsicBounds(null, getResources().getDrawable(R.mipmap.res_up), null, null);
+    }
+
+    /**
+     * 选中Android
+     */
+    public void selectedAndorid() {
+        Drawable androidDrawable = getColorPrimaryDrawable(R.mipmap.android_up);
+        androidRb.setCompoundDrawablesWithIntrinsicBounds(null, androidDrawable, null, null);
+    }
+
+    /**
+     * 选中Ios
+     */
+    public void selectedIos() {
+        Drawable iosDrawable = getColorPrimaryDrawable(R.mipmap.ios_up);
+        iosRb.setCompoundDrawablesWithIntrinsicBounds(null, iosDrawable, null, null);
+    }
+
+    /**
+     * 选中Welfare
+     */
+    public void selectedWelfare() {
+        Drawable welfareDrawable = getColorPrimaryDrawable(R.mipmap.welfare_up);
+        welfareRb.setCompoundDrawablesWithIntrinsicBounds(null, welfareDrawable, null, null);
+    }
+
+    /**
+     * 选中Res
+     */
+    public void selectedRes() {
+        Drawable resDrawable = getColorPrimaryDrawable(R.mipmap.res_up);
+        resRb.setCompoundDrawablesWithIntrinsicBounds(null, resDrawable, null, null);
+    }
+
+    /**
      * 关闭左侧 侧滑菜单
      */
     private void closeDrawerLayout() {
@@ -145,8 +194,9 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
 
     @Override
     public void onCheckedChanged(RadioGroup group, int checkedId) {
+        radioButtonReset();
         switch (checkedId) {
-            case R.id.android_rb:
+            case android_rb:
                 setTabSelection(Constant.ANDROIDFRAGMENT);
                 break;
             case R.id.ios_rb:
@@ -171,6 +221,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
         hindeAllFragment(transaction);
         switch (index) {
             case Constant.ANDROIDFRAGMENT:
+                selectedAndorid();
                 //设置左侧item联动radioGrup
                 mainNavigationView.setCheckedItem(R.id.item_android);
                 //设置title的显示
@@ -182,7 +233,9 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
                     transaction.show(androidFragment);
                 }
                 break;
+
             case Constant.IOSFRAGMENT:
+                selectedIos();
                 mainNavigationView.setCheckedItem(R.id.item_ios);
                 mainToolbarTv.setText("IOS");
                 if (iosFragment == null) {
@@ -192,7 +245,9 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
                     transaction.show(iosFragment);
                 }
                 break;
+
             case Constant.WELFAREFRAGMENT:
+                selectedWelfare();
                 mainNavigationView.setCheckedItem(R.id.item_welfare);
                 mainToolbarTv.setText(R.string.Welfare);
                 if (welfareFragment == null) {
@@ -202,7 +257,9 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
                     transaction.show(welfareFragment);
                 }
                 break;
+
             case Constant.RESFRAGMENT:
+                selectedRes();
                 mainNavigationView.setCheckedItem(R.id.item_res);
                 mainToolbarTv.setText(R.string.ExpandingResources);
                 if (resFragment == null) {
@@ -256,5 +313,23 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
         }
     }
 
+    /**
+     * 获取变成ColorPrimary颜色的icon
+     *
+     * @return
+     * @id 要转换的Drawable
+     */
+    public Drawable getColorPrimaryDrawable(@DrawableRes int id) {
+        Drawable drawable = getResources().getDrawable(id);
+        Drawable.ConstantState state = drawable.getConstantState();
+        drawable = DrawableCompat.wrap(state == null ? drawable : state.newDrawable()).mutate();
+
+        TypedValue typedValue = new TypedValue();
+        getTheme().resolveAttribute(R.attr.colorPrimary, typedValue, true);
+        int color = typedValue.resourceId;
+        ColorStateList colorStateList = getResources().getColorStateList(color);
+        DrawableCompat.setTintList(drawable, colorStateList);
+        return drawable;
+    }
 
 }

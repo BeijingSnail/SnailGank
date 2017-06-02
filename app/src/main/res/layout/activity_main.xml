@@ -69,7 +69,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:checked="true"
-                    android:drawableTop="@drawable/rb_android_style"
+                    android:drawableTop="@mipmap/android_up"
                     android:text="Android" />
 
                 <RadioButton
@@ -78,7 +78,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:drawableTop="@drawable/rb_ios_style"
+                    android:drawableTop="@mipmap/ios_up"
                     android:text="IOS" />
 
                 <RadioButton
@@ -87,7 +87,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:drawableTop="@drawable/rb_welfare_style"
+                    android:drawableTop="@mipmap/welfare_up"
                     android:text="@string/Welfare" />
 
                 <RadioButton
@@ -96,7 +96,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:drawableTop="@drawable/rb_res_style"
+                    android:drawableTop="@mipmap/res_up"
                     android:text="@string/ExpandingResources" />
             </RadioGroup>
 
