@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SnailGank</string>
+    <string name="app_name">蜗牛干货</string>
     <string name="drawer_open">Open</string>
     <string name="drawer_close">Close</string>
     <string name="Welfare">福利</string>
@@ -17,7 +17,6 @@
     <string name="DataSources">http://gank.io</string>
     <string name="Copyright">版权</string>
     <string name="AboutCopyright">版权归作者所有</string>
-    <string name="AboutPurpose">该项目用于学习研究，请勿用于商业用途</string>
-
+    <string name="AboutPurpose">该项目用于学习交流，请勿用于商业用途</string>
 
 </resources>
