@@ -15,7 +15,7 @@ GankApp
 - [HandyWebView](https://github.com/BeijingSnail/HandyWebView)
 
 ## 感谢
-- 本app所有数据均来源于[干货集中营](http://gank.io/)
+- 本app所有数据均来源于  [干货集中营](http://gank.io/)
 
 
 ## 截图
