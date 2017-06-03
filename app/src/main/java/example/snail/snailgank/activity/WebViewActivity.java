@@ -22,8 +22,8 @@ public class WebViewActivity extends BaseActivity {
     Toolbar wvToolbar;
     @Bind(R.id.progress_webview)
     ProgressWebView progressWebview;
-    @Bind(R.id.activity_main)
-    LinearLayout activityMain;
+    @Bind(R.id.activity_webview)
+    LinearLayout activityWebView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,4 +50,16 @@ public class WebViewActivity extends BaseActivity {
         }
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        activityWebView.removeView(progressWebview);
+        progressWebview.destroy();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        progressWebview.reload();
+    }
 }
