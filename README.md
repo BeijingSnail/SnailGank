@@ -3,7 +3,7 @@ GankApp
 
 ## 介绍
 - 一款用于技术练习的干货集中营客户端，采用Retrofit+Rxjava+Lambda进行网络请求，UI参考Material Designg风格。
-- 目前实现一些简单的核心功能，后续有时间会持续增加新功能
+- 目前实现一些简单的核心功能
 
 ## 依赖库
 - [Retrofit](https://github.com/square/retrofit)
