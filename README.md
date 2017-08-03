@@ -17,6 +17,8 @@ GankApp
 ## 感谢
 - 本app所有数据均来源于  [干货集中营](http://gank.io/)
 
+## Kotlin
+- 已开发出kotlin版本  [点击进入](https://github.com/BeijingSnail/KotlinSnailGank)
 
 ## 截图
 
